@@ -6,8 +6,13 @@ class CommentsController < ApplicationController
   def new; end
 
   def create
-    @comment = Comment.new(params.require(:comment).permit(:name_author, :body))
-    @comment.save
+    @comment = Comment.create(comment_params)
     redirect_to @comment
   end
+
+  private
+  def comment_params
+    params.require(:comment).permit(:author_id, :body)
+  end
+
 end

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180418183829) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "billihg_infos", force: :cascade do |t|
     t.string "last4"
     t.string "country"
