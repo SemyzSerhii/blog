@@ -1,3 +1,3 @@
 class Post < ApplicationRecord
-  attr_accessible :title, :body, :author_id
+  belongs_to :user, foreign_key: :author_id
 end
