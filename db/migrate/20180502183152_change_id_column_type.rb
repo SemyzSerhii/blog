@@ -19,9 +19,13 @@ class ChangeIdColumnType < ActiveRecord::Migration[5.1]
     add_reference :user_books, :book, foreign_key: true
 
     remove_column :comments, :name_autor
+
+    rename_table :user_books, :books_users
   end
 
   def down
+    rename_table  :books_users, :user_books
+
     remove_column :posts, :user_id
     add_column    :posts, :author_id, :string
 
@@ -38,7 +42,7 @@ class ChangeIdColumnType < ActiveRecord::Migration[5.1]
     add_column    :user_books, :author_id, :integer
     add_column    :user_books, :books_id, :integer
 
-    add_column :comments, :name_autor, :string
+    add_column    :comments, :name_autor, :string
 
     rename_table  :billing_infos, :billihg_infos
   end

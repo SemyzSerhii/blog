@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-  has_many :users, through: :user_books
+  has_and_belongs_to_many :users, through: :book_users
 end

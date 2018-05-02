@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20180502183152) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "books_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_books_users_on_book_id"
+    t.index ["user_id"], name: "index_books_users_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -50,15 +59,6 @@ ActiveRecord::Schema.define(version: 20180502183152) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_books", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_user_books_on_book_id"
-    t.index ["user_id"], name: "index_user_books_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 20180502183152) do
   end
 
   add_foreign_key "billing_infos", "users"
+  add_foreign_key "books_users", "books"
+  add_foreign_key "books_users", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "user_books", "books"
-  add_foreign_key "user_books", "users"
 end
