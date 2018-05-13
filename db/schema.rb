@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502183152) do
+ActiveRecord::Schema.define(version: 20180513074558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avatars", force: :cascade do |t|
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.bigint "user_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_avatars_on_imageable_type_and_imageable_id"
+    t.index ["user_id"], name: "index_avatars_on_user_id"
+  end
 
   create_table "billing_infos", force: :cascade do |t|
     t.string "last4"
@@ -66,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180502183152) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "avatars", "users"
   add_foreign_key "billing_infos", "users"
   add_foreign_key "books_users", "books"
   add_foreign_key "books_users", "users"
