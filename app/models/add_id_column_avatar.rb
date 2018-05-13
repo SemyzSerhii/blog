@@ -1,0 +1,2 @@
+class AddIdColumnAvatar < ApplicationRecord
+end
