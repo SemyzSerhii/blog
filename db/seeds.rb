@@ -19,5 +19,14 @@ billing_infos = BillingInfo.create(
   last4: Faker::Number.number(4),
   country: Faker::Address.country,
   brand: Faker::Business.credit_card_type,
-  user_id:  User.last.id { |users| (p users.id)}
+  user_id: User.last.id { |users| (p users.id)}
+)
+
+books = Book.create(
+  body: Faker::Book.title,
+)
+
+books_users = BookUser.create(
+  user_id: User.last.id { |userss| (p userss.id)},
+  book_id: Book.last.id { |bookis| (p bookis.id)}
 )
