@@ -14,3 +14,10 @@ user = User.create(
   username: Faker::Internet.user_name,
   password: password
 )
+
+billing_infos = BillingInfo.create(
+  last4: Faker::Number.number(4),
+  country: Faker::Address.country,
+  brand: Faker::Business.credit_card_type,
+  user_id:  User.last.id { |users| (p users.id)}
+)
