@@ -33,3 +33,9 @@ posts = Post.create(
   body: Faker::RickAndMorty.quote,
   user_id: user.id
 )
+
+comments = Comment.create(
+  body: Faker::HarryPotter.quote,
+  user_id: user.id,
+  post_id: posts.id
+)
