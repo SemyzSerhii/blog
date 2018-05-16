@@ -28,3 +28,8 @@ book = Book.create(
 
 book_users = user.books << book
 
+posts = Post.create(
+  title: Faker::RickAndMorty.character,
+  body: Faker::RickAndMorty.quote,
+  user_id: user.id
+)
