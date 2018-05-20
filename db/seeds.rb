@@ -39,3 +39,5 @@ comments = Comment.create(
   user_id: user.id,
   post_id: posts.id
 )
+
+images = user.build_avatar(url: Faker::Placeholdit.image).save
