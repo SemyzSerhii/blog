@@ -10,28 +10,43 @@ require 'faker'
 
 password = 'password'
 
-user = User.create(
+def save_and_notify(entity)
+  if entity.save
+    puts "SUCCESS: #{entity.class}"
+  else
+    puts "ERROR: #{entity.class} #{entity.errors.full_messages}"
+  end
+end
+
+user = User.new(
   username: Faker::Internet.user_name,
   password: password
 )
 
-billing_info = BillingInfo.create(
+save_and_notify(user)
+
+billing_info = BillingInfo.new(
   last4: Faker::Number.number(4),
   country: Faker::Address.country,
   brand: Faker::Business.credit_card_type,
   user_id: user.id
 )
-book = user.books.create(body: Faker::Book.title)
+save_and_notify(billing_info)
 
-post = user.posts.create(
+book = user.books.build(body: Faker::Book.title)
+save_and_notify(book)
+
+post = user.posts.build(
   title: Faker::RickAndMorty.character,
-  body: Faker::RickAndMorty.quote,
+  body: Faker::RickAndMorty.quote
 )
+save_and_notify(post)
 
-user.comments.create(
+comment = user.comments.build(
   body: Faker::HarryPotter.quote,
   post: post
 )
+save_and_notify(comment)
 
-image = user.create_avatar(url: Faker::Placeholdit.image)
-
+image = user.build_avatar(url: Faker::Placeholdit.image)
+save_and_notify(image)
