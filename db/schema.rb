@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180513152744) do
+ActiveRecord::Schema.define(version: 20180521172108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(version: 20180513152744) do
     t.index ["user_id"], name: "index_billing_infos_on_user_id"
   end
 
-  create_table "books", force: :cascade do |t|
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books_users", force: :cascade do |t|
+  create_table "book_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "book_id"
-    t.index ["book_id"], name: "index_books_users_on_book_id"
-    t.index ["user_id"], name: "index_books_users_on_user_id"
+    t.index ["book_id"], name: "index_book_users_on_book_id"
+    t.index ["user_id"], name: "index_book_users_on_user_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20180513152744) do
   end
 
   add_foreign_key "billing_infos", "users"
-  add_foreign_key "books_users", "books"
-  add_foreign_key "books_users", "users"
+  add_foreign_key "book_users", "books"
+  add_foreign_key "book_users", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"

@@ -9,5 +9,5 @@
 #
 
 class Book < ApplicationRecord
-  has_and_belongs_to_many :users, through: :book_users
+  has_and_belongs_to_many :users, join_table: :book_users, class_name: 'User'
 end

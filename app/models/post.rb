@@ -11,7 +11,7 @@
 #
 
 class Post < ApplicationRecord
-  has_many :comments
-
+  has_many :comments, dependent: :destroy
+  has_one :cover, as: :imageable, class_name: 'Image', dependent: :destroy
   belongs_to :user, optional: true
 end

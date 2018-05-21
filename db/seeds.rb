@@ -25,6 +25,7 @@ count.times do |i|
     username: Faker::Internet.user_name,
     password: password
   )
+  user.build_avatar(url: Faker::Placeholdit.image)
 
   save_and_notify(user)
 
@@ -43,6 +44,7 @@ count.times do |i|
     title: Faker::RickAndMorty.character,
     body: Faker::RickAndMorty.quote
   )
+  post.build_cover(url: Faker::Placeholdit.image)
   save_and_notify(post)
 
   comment = user.comments.build(
@@ -51,6 +53,4 @@ count.times do |i|
   )
   save_and_notify(comment)
 
-  image = user.build_avatar(url: Faker::Placeholdit.image)
-  save_and_notify(image)
 end
