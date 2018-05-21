@@ -5,3 +5,48 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+require 'faker'
+
+password = 'password'
+
+def save_and_notify(entity)
+  if entity.save
+    puts "SUCCESS: #{entity.class}"
+  else
+    puts "ERROR: #{entity.class} #{entity.errors.full_messages}"
+  end
+end
+
+user = User.new(
+  username: Faker::Internet.user_name,
+  password: password
+)
+
+save_and_notify(user)
+
+billing_info = BillingInfo.new(
+  last4: Faker::Number.number(4),
+  country: Faker::Address.country,
+  brand: Faker::Business.credit_card_type,
+  user_id: user.id
+)
+save_and_notify(billing_info)
+
+book = user.books.build(body: Faker::Book.title)
+save_and_notify(book)
+
+post = user.posts.build(
+  title: Faker::RickAndMorty.character,
+  body: Faker::RickAndMorty.quote
+)
+save_and_notify(post)
+
+comment = user.comments.build(
+  body: Faker::HarryPotter.quote,
+  post: post
+)
+save_and_notify(comment)
+
+image = user.build_avatar(url: Faker::Placeholdit.image)
+save_and_notify(image)
