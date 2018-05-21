@@ -15,29 +15,23 @@ user = User.create(
   password: password
 )
 
-billing_infos = BillingInfo.create(
+billing_info = BillingInfo.create(
   last4: Faker::Number.number(4),
   country: Faker::Address.country,
   brand: Faker::Business.credit_card_type,
   user_id: user.id
 )
+book = user.books.create(body: Faker::Book.title)
 
-book = Book.create(
-  body: Faker::Book.title,
-)
-
-book_users = user.books << book
-
-posts = Post.create(
+post = user.posts.create(
   title: Faker::RickAndMorty.character,
   body: Faker::RickAndMorty.quote,
-  user_id: user.id
 )
 
-comments = Comment.create(
+user.comments.create(
   body: Faker::HarryPotter.quote,
-  user_id: user.id,
-  post_id: posts.id
+  post: post
 )
 
-images = user.build_avatar(url: Faker::Placeholdit.image).save
+image = user.create_avatar(url: Faker::Placeholdit.image)
+
