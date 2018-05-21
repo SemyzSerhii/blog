@@ -223,7 +223,7 @@ DEPENDENCIES
   bootstrap (~> 4.1.1)
   byebug
   capybara (~> 2.13)
-  coffee-rails (~> 4.2)
+  coffee-rails
   debase
   faker
   jbuilder (~> 2.5)

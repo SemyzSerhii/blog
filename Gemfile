@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap', '~> 4.1.1'
+gem 'coffee-rails' # no used in the system but can not be removed
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
