@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'faker'
 
 
 group :development, :test do
@@ -51,7 +52,6 @@ group :development do
   # Rubymine debug
   gem 'ruby-debug-ide'
   gem 'debase'
-  gem 'faker'
   gem 'annotate'
 end
 
