@@ -9,6 +9,7 @@
 require 'faker'
 
 password = 'password'
+count = ENV.fetch('count', '1').to_i
 
 def save_and_notify(entity)
   if entity.save
@@ -18,35 +19,38 @@ def save_and_notify(entity)
   end
 end
 
-user = User.new(
-  username: Faker::Internet.user_name,
-  password: password
-)
+count.times do |i|
+  puts "STARTED CREATING #{i + 1}"
+  user = User.new(
+    username: Faker::Internet.user_name,
+    password: password
+  )
 
-save_and_notify(user)
+  save_and_notify(user)
 
-billing_info = BillingInfo.new(
-  last4: Faker::Number.number(4),
-  country: Faker::Address.country,
-  brand: Faker::Business.credit_card_type,
-  user_id: user.id
-)
-save_and_notify(billing_info)
+  billing_info = BillingInfo.new(
+    last4: Faker::Number.number(4),
+    country: Faker::Address.country,
+    brand: Faker::Business.credit_card_type,
+    user_id: user.id
+  )
+  save_and_notify(billing_info)
 
-book = user.books.build(body: Faker::Book.title)
-save_and_notify(book)
+  book = user.books.build(body: Faker::Book.title)
+  save_and_notify(book)
 
-post = user.posts.build(
-  title: Faker::RickAndMorty.character,
-  body: Faker::RickAndMorty.quote
-)
-save_and_notify(post)
+  post = user.posts.build(
+    title: Faker::RickAndMorty.character,
+    body: Faker::RickAndMorty.quote
+  )
+  save_and_notify(post)
 
-comment = user.comments.build(
-  body: Faker::HarryPotter.quote,
-  post: post
-)
-save_and_notify(comment)
+  comment = user.comments.build(
+    body: Faker::HarryPotter.quote,
+    post: post
+  )
+  save_and_notify(comment)
 
-image = user.build_avatar(url: Faker::Placeholdit.image)
-save_and_notify(image)
+  image = user.build_avatar(url: Faker::Placeholdit.image)
+  save_and_notify(image)
+end
