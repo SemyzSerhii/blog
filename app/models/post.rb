@@ -13,5 +13,8 @@
 class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :cover, as: :imageable, class_name: 'Image', dependent: :destroy
-  belongs_to :user, optional: true
+  belongs_to :user
+  validates :title, uniqueness: true, presence: true
+  validates :body, presence: true
+
 end

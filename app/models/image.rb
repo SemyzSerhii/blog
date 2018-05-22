@@ -10,4 +10,5 @@
 
 class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true
+  validates :url, url: true
 end
