@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: billing_infos
@@ -13,7 +15,7 @@
 
 class BillingInfo < ApplicationRecord
   belongs_to :user
-  validates :last4, numericality: { only_integer: true, equal_to: (4) }, presence: true
+  validates :last4, numericality: { only_integer: true, equal_to: 4 }, presence: true
   validates :country, presence: true
   validates :brand, presence: true
 end

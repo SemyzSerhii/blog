@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeIdColumnType < ActiveRecord::Migration[5.1]
   def up
     rename_table  :billihg_infos, :billing_infos

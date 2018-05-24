@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAddIdColumnAvatars < ActiveRecord::Migration[5.1]
   def up
     remove_column :avatars, :author_id
