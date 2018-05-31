@@ -28,6 +28,7 @@ end
 group :development do
   gem 'annotate'
   gem 'awesome_print', require: 'ap'
+  gem 'better_errors'
   gem 'debase'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-rails'
