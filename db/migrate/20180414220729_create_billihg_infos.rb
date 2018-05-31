@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBillihgInfos < ActiveRecord::Migration[5.1]
   def change
     create_table :billihg_infos do |t|
@@ -7,6 +9,5 @@ class CreateBillihgInfos < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.timestamps
     end
-
   end
 end

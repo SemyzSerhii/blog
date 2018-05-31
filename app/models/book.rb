@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -10,4 +12,6 @@
 
 class Book < ApplicationRecord
   has_and_belongs_to_many :users, join_table: :book_users, class_name: 'User'
+  validates :name, uniqueness: true, presence: true
+  validates :body, presence: true
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -11,6 +13,7 @@
 #
 
 class Comment < ApplicationRecord
-  belongs_to :post, optional: true
-  belongs_to :user, optional: true
+  belongs_to :post
+  belongs_to :user
+  validates :body, presence: true
 end

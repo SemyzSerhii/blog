@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: images
@@ -10,4 +12,5 @@
 
 class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true
+  validates :url, url: true
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -16,4 +18,7 @@ class User < ApplicationRecord
 
   has_one :avatar, as: :imageable, class_name: 'Image', dependent: :destroy
   has_one :billing_info, dependent: :destroy
+
+  validates :username, uniqueness: true, presence: true
+  validates :password, length: { minimum: 6 }, presence: true
 end
