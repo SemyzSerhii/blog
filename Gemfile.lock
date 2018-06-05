@@ -48,6 +48,7 @@ GEM
     autoprefixer-rails (8.5.0)
       execjs
     awesome_print (1.8.0)
+    bcrypt (3.1.12)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -227,6 +228,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
+  bcrypt
   better_errors
   bootstrap (~> 4.1.1)
   byebug
