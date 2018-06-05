@@ -1,38 +1,34 @@
-
-  <div class= "center">
-    <h1 class="Sign_UP"> Sign Up</h1>
-
-<%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Errors</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+<div class= "center">
+  <h1 class="Sign_UP"> Sign Up</h1>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Errors</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+           <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
   <div class="form-group">
     <div class="col-md-6">
       <%= f.label :username , class:"User_save" %><br />
-  <%= f.text_field :username , class: "form-control" , placeholder: "Enter Your Username"%>
+      <%= f.text_field :username , class: "form-control" , placeholder: "Enter Your Username"%>
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-6">
       <%= f.label :password, class: "but_Password_save" %><br />
       <%= f.password_field :password, class: "form-control",  placeholder: "Enter Your Password"  %>
+    </div>
   </div>
-  </div>
-
   <div class="form-group">
     <div class="col-md-6">
       <%= f.label :password_confirmation, class: "but_User_save_2Xpassword"  %><br/>
       <%= f.password_field :password_confirmation , class: "form-control",  placeholder: "Confirm Your Password"%>
     </div>
   </div>
-      <div class="but_Data_save "><button type="submit" class="btn btn-primary col-md-3">Save Your Data</button></div>
-<% end %>
-
-  </div>
+  <div class="but_Data_save "><button type="submit" class="btn btn-primary col-md-3">Save Your Data</button></div>
+  <% end %>
+</div>

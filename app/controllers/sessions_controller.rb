@@ -24,10 +24,10 @@ class SessionsController < ApplicationController
       session[:user_id] = nil
       redirect_to({ action: :index }, notice: 'Logged out!')
     end
-end
 
-private
+  private
 
-def find_user
-  @user = User.find(params[:id])
+  def find_user
+    @user = User.find(params[:id])
+  end
 end

@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user2
+  helper_method :current_user
   protect_from_forgery with: :exception
 
+  private
+
   def current_user
-    @user ||= User.first
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
-
-
-private
-
-def current_user2
-  @current_user2 ||= User.find(session[:user_id]) if session[:user_id]
 end
-end
+
+
+
+
+

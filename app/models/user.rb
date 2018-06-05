@@ -23,15 +23,15 @@ class User < ApplicationRecord
 
 
   validates :username, uniqueness: true, presence: true
-  validates :password, length: { minimum: 6 }, presence: :create
+  validates :password, length: { minimum: 6 }, presence: true
 
   before_save :encrypt_password
 
 
   def self.authenticate(username, password)
-    @user = find_by_username(username)
-    if @user && @user.password_hash == BCrypt::Engine.hash_secret(password, @user.password_salt)
-      @user
+    user = find_by_username(username)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
     else
       nil
     end
