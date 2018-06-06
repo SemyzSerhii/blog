@@ -10,7 +10,6 @@ class RenameAvatarToImages < ActiveRecord::Migration[5.1]
   def down
     add_reference :images, :user, foreign_key: true
     remove_column :images, :url
-
     rename_table :images, :avatars
   end
 end

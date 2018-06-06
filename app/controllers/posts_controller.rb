@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
-  
+
   def index
     @posts = Post.all
   end
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit; end
 
   def update
@@ -31,12 +31,12 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     if @post.destroy
       redirect_to({ action: :index }, notice: 'Post was successfully deleted!')
     else
-      redirect_to({ action: :index }, notice: 'Post was not deleted!')      
+      redirect_to({ action: :index }, notice: 'Post was not deleted!')
     end
   end
 

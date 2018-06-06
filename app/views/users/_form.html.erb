@@ -1,5 +1,5 @@
 <div class= "center">
-  <h1 class="Sign_UP"> Sign Up</h1>
+  <h1 class="sign_up"> Sign Up</h1>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
@@ -13,22 +13,22 @@
   <% end %>
   <div class="form-group">
     <div class="col-md-6">
-      <%= f.label :username , class:"User_save" %><br />
+      <%= f.label :username , class:"user_save" %><br />
       <%= f.text_field :username , class: "form-control" , placeholder: "Enter Your Username"%>
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-6">
-      <%= f.label :password, class: "but_Password_save" %><br />
+      <%= f.label :password, class: "but_password_save" %><br />
       <%= f.password_field :password, class: "form-control",  placeholder: "Enter Your Password"  %>
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-6">
-      <%= f.label :password_confirmation, class: "but_User_save_2Xpassword"  %><br/>
+      <%= f.label :password_confirmation, class: "but_user_save_password2"  %><br/>
       <%= f.password_field :password_confirmation , class: "form-control",  placeholder: "Confirm Your Password"%>
     </div>
   </div>
-  <div class="but_Data_save "><button type="submit" class="btn btn-primary col-md-3">Save Your Data</button></div>
+  <div class="but_data_save "><button type="submit" class="btn btn-primary col-md-3">Save Your Data</button></div>
   <% end %>
 </div>
