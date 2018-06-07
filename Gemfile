@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap', '~> 4.1.1'
+gem 'bcrypt'
 gem 'coffee-rails' # no used in the system but can not be removed
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
@@ -12,8 +13,8 @@ gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.5'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
-gem 'validate_url'
 gem 'uglifier', '>= 1.3.0'
+gem 'validate_url'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -21,7 +22,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-
   gem 'rubocop'
 end
 
