@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
   <%= form_for @post do |f| %>
     <div class="form-group">
       <%= f.label :title %>
@@ -7,12 +7,17 @@
         <%= @post.errors[:title].join(', ') %>
       </small>
     </div>
+
     <div class="form-group">
       <%= f.label :body %>
       <%= f.text_area :body, size: '60x12', required: true,  class: 'form-control' %>
       <small id="bodyHelp" class="form-text text-danger">
         <%= @post.errors[:body].join(', ') %>
       </small>
+    </div>
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
     </div>
     <%= f.submit 'Save', class: 'btn btn-success' %>
   <% end %>

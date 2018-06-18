@@ -1,6 +1,7 @@
 <div class="card" style="width: 30rem;">
   <% if post.cover.present? %>
-    <%= image_tag post.cover.url, class: 'card-img-top' %>
+    <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
+
   <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= post.title %></h5>

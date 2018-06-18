@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap', '~> 4.1.1'
 gem 'bcrypt'
+gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails' # no used in the system but can not be removed
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
