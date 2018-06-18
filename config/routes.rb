@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'log_out' => 'sessions#destroy', :as => 'log_out'
+  root 'posts#index'
 
-  root 'users#index'
+  get :log_out, to: 'sessions#destroy'
 
-  resources :users
+  resources :users, except: :index
   resources :posts
-  resources :sessions
+  resources :sessions, except: :index
 end

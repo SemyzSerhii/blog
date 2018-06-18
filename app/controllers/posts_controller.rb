@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:cover).page(params[:page])
   end
 
   def show; end

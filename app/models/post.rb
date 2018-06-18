@@ -13,6 +13,8 @@
 #
 
 class Post < ApplicationRecord
+  max_paginates_per 20
+
   has_many :comments, dependent: :destroy
   has_one :cover, as: :imageable, class_name: 'Image', dependent: :destroy
   belongs_to :user

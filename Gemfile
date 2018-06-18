@@ -2,12 +2,13 @@
 
 source 'https://rubygems.org'
 
-gem 'bootstrap', '~> 4.1.1'
 gem 'bcrypt'
+gem 'bootstrap', '~> 4.1.1'
 gem 'coffee-rails' # no used in the system but can not be removed
 gem 'faker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.5'
@@ -21,14 +22,15 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem 'rubocop'
+  gem 'selenium-webdriver'
 end
 
 group :development do
   gem 'annotate'
   gem 'awesome_print', require: 'ap'
   gem 'better_errors'
+  gem 'bullet'
   gem 'debase'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-rails'
