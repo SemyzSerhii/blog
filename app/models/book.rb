@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: books
@@ -8,6 +7,7 @@
 #  body       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  name       :string
 #
 
 class Book < ApplicationRecord

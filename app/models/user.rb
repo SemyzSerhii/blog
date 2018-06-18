@@ -1,14 +1,14 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
 #
-#  id         :bigint(8)        not null, primary key
-#  username   :string
-#  password   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :bigint(8)        not null, primary key
+#  username      :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  password_hash :string
+#  password_salt :string
 #
 
 class User < ApplicationRecord
@@ -21,27 +21,25 @@ class User < ApplicationRecord
   has_one :avatar, as: :imageable, class_name: 'Image', dependent: :destroy
   has_one :billing_info, dependent: :destroy
 
-
   validates :username, uniqueness: true, presence: true
   validates :password, length: { minimum: 6 }, presence: true
 
-  before_save :encrypt_password
-
+  before_save :encrypt_password, if: -> { password.present? }
 
   def self.authenticate(username, password)
-    user = find_by_username(username)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
+    user = find_by(username: username)
+
+    user if user&.correct_password?(password)
   end
 
+  def correct_password?(password)
+    password_hash == BCrypt::Engine.hash_secret(password, password_salt)
+  end
+
+  private
 
   def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
+    self.password_salt = BCrypt::Engine.generate_salt
+    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   end
 end
