@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'activeadmin'
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.1.1'
 gem 'coffee-rails' # no used in the system but can not be removed

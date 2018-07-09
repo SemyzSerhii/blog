@@ -1,5 +1,4 @@
-<div class="card-columns">
-  <%= render @posts %>
+<%== paginate @posts %>
+<div class="card-columns" id="posts">
+  <%== render @posts %>
 </div>
-
-<%= paginate @posts %>
