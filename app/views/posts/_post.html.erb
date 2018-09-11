@@ -1,12 +1,14 @@
 <div class="card" style="width: 28rem;">
   <% if post.cover.present? %>
-    <%= link_to(image_tag(post.cover.thumb.url, target: '_blank'),post.cover.url, alt: 'Image') if post.cover? class: 'card-img-top' %>
+    <%= link_to post.cover.url.url, alt: 'Image', class: 'card-img-top', target: '_blank' do %>
+      <%= image_tag post.cover.url.middle.url %>
+    <% end %>
   <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= post.title %></h5>
     <p class="card-text"> <%= post.body %></p>
     <%= link_to 'Open', post, class: 'btn btn-primary'%>
-    <%= link_to 'Edit', post_path(post), class: 'btn btn-warning'%>
+    <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning'%>
     <%= link_to 'Destroy', post_path(post), method: :delete, confir: 'Are you sure?', class: 'btn btn-danger'%>
   </div>
 </div>

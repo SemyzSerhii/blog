@@ -9,14 +9,19 @@
     </div>
     <div class="form-group">
       <%= f.label :body %>
-      <%= f.text_area :body, size: '60x12', required: true,  class: 'form-control' %>
+      <%= f.text_area :body, size: '60x12', required: true, class: 'form-control' %>
       <small id="bodyHelp" class="form-text text-danger">
         <%= @post.errors[:body].join(', ') %>
       </small>
     </div>
     <div>
-      <%= f.label :cover %>
-      <%= f.file_field :cover %>
+      <%= f.fields_for :cover, @post.build_cover do |ff| %>
+        <%= ff.label :url, 'Image' %>
+        <%= ff.file_field :url %>
+        <small id="bodyHelp" class="form-text text-danger">
+          <%= @post.errors['cover.url'].join(', ') %>
+        </small>
+      <% end %>
     </div>
     <%= f.submit 'Save', class: 'btn btn-success' %>
   <% end %>

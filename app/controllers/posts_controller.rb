@@ -5,9 +5,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(@posts).page(params[:page])
-
-
-    end
   end
 
   def show; end
@@ -50,6 +47,8 @@ class PostsController < ApplicationController
   end
 
   def posts_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(
+      :title, :body, cover_attributes: %i[id url]
+    )
   end
-
+end
