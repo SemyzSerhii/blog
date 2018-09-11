@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(@posts).page(params[:page])
+
+
+    end
   end
 
   def show; end
@@ -49,4 +52,4 @@ class PostsController < ApplicationController
   def posts_params
     params.require(:post).permit(:title, :body)
   end
-end
+
