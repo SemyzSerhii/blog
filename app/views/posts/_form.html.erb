@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
   <%= form_for @post do |f| %>
     <div class="form-group">
       <%= f.label :title %>
@@ -13,6 +13,11 @@
       <small id="bodyHelp" class="form-text text-danger">
         <%= @post.errors[:body].join(', ') %>
       </small>
+    </div>
+    <div>
+      <%= f.label :cover %>
+      <%= f.file_field :cover %>
+
     </div>
     <%= f.submit 'Save', class: 'btn btn-success' %>
   <% end %>

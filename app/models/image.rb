@@ -11,6 +11,9 @@
 #
 
 class Image < ApplicationRecord
+
+  mount_uploader :cover, CoverUploader
+
   belongs_to :imageable, polymorphic: true
   validates :url, url: true
 end

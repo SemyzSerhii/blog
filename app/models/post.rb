@@ -13,6 +13,8 @@
 #
 
 class Post < ApplicationRecord
+  attr_accessor :cover
+
   max_paginates_per 20
 
   has_many :comments, dependent: :destroy
