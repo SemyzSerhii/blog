@@ -9,16 +9,16 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:username], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Login up!'
+      redirect_to root_path, notice: t('controllers.session.create.success')
     else
-      flash.now.alert = 'Invalid email or password'
+      flash.now.alert = t('controllers.session.create.error')
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: 'Logged out!'
+    redirect_to root_path, notice: t('controllers.session.destroy.success')
   end
 
   private
