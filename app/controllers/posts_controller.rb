@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.includes(:cover).page(params[:page])
+    @posts = Post.includes(@posts).page(params[:page])
   end
 
   def show; end
@@ -47,6 +47,8 @@ class PostsController < ApplicationController
   end
 
   def posts_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(
+      :title, :body, cover_attributes: %i[id url]
+    )
   end
 end
